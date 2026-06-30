@@ -1,230 +1,373 @@
-# 🚗 Parking Slot Detection and Occupancy Estimation System
+<!-- ===================================================================================== -->
+<!--                     Parking Slot Detection and Occupancy Estimation                   -->
+<!-- ===================================================================================== -->
 
-![Python](https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python)
-![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-red?style=for-the-badge)
-![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-green?style=for-the-badge&logo=opencv)
-![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
+<h1 align="center">
+🚗 Parking Slot Detection and Occupancy Estimation System
+</h1>
 
----
+<p align="center">
 
-## 📖 Overview
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
 
-The **Parking Slot Detection and Occupancy Estimation System** is a computer vision and deep learning-based solution designed to automatically detect parking spaces and determine their occupancy status from aerial or static parking lot images.
+<img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge"/>
 
-The system combines **traditional computer vision techniques** with **YOLOv8 object detection** to accurately identify parking slots, classify them as **occupied** or **vacant**, and generate both visual and statistical outputs.
+<img src="https://img.shields.io/badge/YOLOv8-FF6F00?style=for-the-badge"/>
 
----
+<img src="https://img.shields.io/badge/Deep%20Learning-8A2BE2?style=for-the-badge"/>
 
-## ✨ Features
+<img src="https://img.shields.io/badge/Computer%20Vision-009688?style=for-the-badge"/>
 
-- 🚗 Automatic parking slot detection
-- 🤖 YOLOv8-based vehicle detection
-- 📍 Occupancy estimation (Occupied / Available)
-- 🟡 Automatic removal of yellow-striped no-parking zones
-- 📊 CSV report generation
-- 🖼️ Annotated output image generation
-- ⚡ Fast and lightweight processing pipeline
+<img src="https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge"/>
 
----
+</p>
 
-## 🛠 Methodology
+<p align="center">
 
-### 1️⃣ Image Preprocessing
+Automatic Parking Slot Detection using
+<b>Computer Vision</b> +
+<b>YOLOv8</b>
 
-The input parking lot image undergoes several preprocessing steps to improve feature extraction.
-
-- HSV Color Space Filtering
-- Noise Reduction
-- Asphalt Region Extraction
-- Yellow No-Parking Zone Removal
+</p>
 
 ---
 
-### 2️⃣ Parking Slot Detection
+<h2>📖 Overview</h2>
 
-Parking slots are identified using classical computer vision techniques.
+<p>
 
-Techniques used include:
+This project presents a complete parking slot detection and occupancy estimation pipeline using a combination of classical computer vision techniques and deep learning.
+
+The system automatically detects parking slots, identifies parked vehicles, determines slot occupancy, and generates both annotated visual outputs and statistical reports.
+
+</p>
+
+---
+
+<h2>✨ Features</h2>
+
+<table>
+
+<tr>
+
+<td width="50%">
+
+✔ Automatic Parking Slot Detection
+
+✔ YOLOv8 Vehicle Detection
+
+✔ Occupancy Estimation
+
+✔ HSV Color Filtering
+
+</td>
+
+<td width="50%">
+
+✔ Yellow Zone Removal
+
+✔ CSV Report Generation
+
+✔ Annotated Output Images
+
+✔ Lightweight Pipeline
+
+</td>
+
+</tr>
+
+</table>
+
+---
+
+<h2>🧠 Technology Stack</h2>
+
+<table>
+
+<tr>
+
+<th>Category</th>
+
+<th>Technology</th>
+
+</tr>
+
+<tr>
+
+<td>Programming</td>
+
+<td>Python</td>
+
+</tr>
+
+<tr>
+
+<td>Deep Learning</td>
+
+<td>YOLOv8 (Ultralytics)</td>
+
+</tr>
+
+<tr>
+
+<td>Computer Vision</td>
+
+<td>OpenCV</td>
+
+</tr>
+
+<tr>
+
+<td>Image Processing</td>
+
+<td>HSV Filtering • Canny Edge Detection</td>
+
+</tr>
+
+<tr>
+
+<td>Feature Detection</td>
+
+<td>Hough Line Transform</td>
+
+</tr>
+
+<tr>
+
+<td>Libraries</td>
+
+<td>NumPy • Pandas</td>
+
+</tr>
+
+</table>
+
+---
+
+<h2>⚙ Methodology</h2>
+
+<details open>
+
+<summary><b>🔍 Image Preprocessing</b></summary>
+
+<br>
+
+- HSV Color Filtering
+- Asphalt Extraction
+- Noise Removal
+- Yellow Zone Filtering
+
+</details>
+
+---
+
+<details>
+
+<summary><b>🚗 Parking Slot Detection</b></summary>
+
+<br>
 
 - Canny Edge Detection
-- Hough Line Transform
+- Hough Transform
 - Contour Detection
 - Polygon Approximation
 - Bounding Box Generation
 - Geometric Validation
 
-The detected slots are indexed using a structured **Row–Column Mapping** for easier analysis.
+</details>
 
 ---
 
-### 3️⃣ Vehicle Detection
+<details>
 
-Vehicle detection is performed using the **YOLOv8 Nano** object detection model.
+<summary><b>🚘 Vehicle Detection</b></summary>
 
-The detected vehicle bounding boxes are compared with the detected parking slots.
+<br>
 
-Only vehicles whose bounding boxes significantly overlap a parking slot are considered valid occupants.
+YOLOv8 Nano detects vehicles.
 
----
+Vehicle bounding boxes are matched with parking slots using overlap analysis.
 
-### 4️⃣ Occupancy Estimation
-
-Each parking slot is classified as:
-
-- 🟥 Occupied
-- 🟩 Available
-
-based on the overlap between parking slot regions and detected vehicles.
+</details>
 
 ---
 
-### 5️⃣ Slot Filtering
+<details>
 
-To improve detection accuracy, several filtering strategies were applied.
+<summary><b>📊 Occupancy Estimation</b></summary>
 
-- Geometric filtering
-- Minimum area thresholding
-- Aspect ratio validation
-- Color-based filtering
-- False-positive suppression
+<br>
 
-These techniques remove invalid parking slot candidates and improve robustness under different lighting conditions.
+Parking slots are classified as
 
----
+🟥 Occupied
 
-## 🧠 Technologies Used
+🟩 Available
 
-| Category | Technologies |
-|-----------|--------------|
-| Programming Language | Python |
-| Deep Learning | YOLOv8 (Ultralytics) |
-| Computer Vision | OpenCV |
-| Image Processing | HSV Filtering, Canny Edge Detection |
-| Feature Detection | Hough Transform |
-| Data Processing | NumPy, Pandas |
+using slot-to-vehicle overlap.
+
+</details>
 
 ---
 
-## 📂 Project Structure
+<h2>📂 Project Structure</h2>
 
 ```text
-📦 parking-slot-detection
-│
-├── parking_detection.py          # Main detection pipeline
-├── preprocessing1.txt            # Available slot coordinates
-├── preprocessing2.txt            # Occupied slot coordinates
-├── P2.png                        # Input parking lot image
-├── annotated_output.jpg          # Annotated output image
-├── output.csv                    # Slot statistics
-├── requirements.txt              # Required Python packages
+parking-slot-detection/
+
+├── parking_detection.py
+├── preprocessing1.txt
+├── preprocessing2.txt
+├── P2.png
+├── annotated_output.jpg
+├── output.csv
+├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 📊 Output
+<h2>📊 Output</h2>
 
-### 🖼 Annotated Image
+<table>
 
-The generated image contains:
+<tr>
 
-- 🟩 Green Bounding Boxes → Available Parking Slots
-- 🟥 Red Bounding Boxes → Occupied Parking Slots
+<th>Output</th>
 
----
+<th>Description</th>
 
-### 📈 CSV Report
+</tr>
 
-The generated CSV file contains
+<tr>
 
-| Parameter | Description |
-|-----------|-------------|
-| Total Slots | Total parking slots detected |
-| Occupied Slots | Number of occupied slots |
-| Available Slots | Number of available slots |
-| Occupancy Percentage | Percentage occupancy |
+<td>Annotated Image</td>
 
----
+<td>Parking slots marked as Occupied / Available</td>
 
-## ⚙ Parameter Optimization
+</tr>
 
-Multiple experiments were conducted to determine the optimal values for:
+<tr>
 
-- HSV Thresholds
-- Canny Edge Thresholds
-- Hough Transform Parameters
-- Contour Area Threshold
-- Bounding Box Dimensions
-- Vehicle-to-Slot IoU Threshold
+<td>CSV Report</td>
 
-The parameters were manually optimized to improve detection performance under varying parking layouts and illumination conditions.
+<td>Total, Occupied and Available Slots</td>
+
+</tr>
+
+</table>
 
 ---
 
-## 🚀 Installation
+<h2>⚙ Parameter Optimization</h2>
 
-Clone the repository
+<ul>
+
+<li>HSV Threshold Tuning</li>
+
+<li>Canny Threshold Optimization</li>
+
+<li>Hough Transform Optimization</li>
+
+<li>Contour Filtering</li>
+
+<li>Bounding Box Validation</li>
+
+<li>Vehicle-to-Slot IoU Thresholding</li>
+
+</ul>
+
+---
+
+<h2>🚀 Installation</h2>
 
 ```bash
-git clone https://github.com/yourusername/parking-slot-detection.git
-```
+git clone https://github.com/ivanantonybabu/parking-slot-detection.git
 
-Move into the project directory
-
-```bash
 cd parking-slot-detection
-```
 
-Install the required dependencies
-
-```bash
 pip install -r requirements.txt
 ```
 
 ---
 
-## ▶ Usage
-
-Run the detection pipeline using
+<h2>▶ Usage</h2>
 
 ```bash
 python parking_detection.py
 ```
 
-The script will automatically:
+The script will automatically
 
-- Detect parking slots
-- Detect vehicles
-- Estimate occupancy
-- Save the annotated image
-- Export parking statistics to a CSV file
-
----
-
-## 📌 Future Improvements
-
-- 🎥 Real-time video support
-- 📹 CCTV camera integration
-- 🌐 Web dashboard
-- 📱 Mobile application
-- 🚙 Multi-class vehicle detection
-- ☁ Cloud deployment
-- 🛰 Drone-based parking monitoring
+- Detect Parking Slots
+- Detect Vehicles
+- Estimate Occupancy
+- Save Annotated Image
+- Export CSV Statistics
 
 ---
 
-## 👨‍💻 Author
+<h2>🎯 Project Context</h2>
 
-**Ivan Antony Babu**
+<p>
+
+Developed as part of the
+
+<b>STAR-PNT Summer Internship Program</b>
+
+at
+
+<b>IIT Tirupati Navavishkar I-Hub Foundation (IITTNiF)</b>
+
+under the Computer Vision Challenge.
+
+</p>
+
+---
+
+<h2>📌 Future Work</h2>
+
+- 🎥 Real-time Video Support
+- 📹 CCTV Integration
+- ☁ Cloud Deployment
+- 🌐 Web Dashboard
+- 📱 Mobile App
+- 🛰 Drone-based Parking Monitoring
+
+---
+
+<h2>👨‍💻 Author</h2>
+
+<p>
+
+<b>Ivan Antony Babu</b>
+
+<br><br>
 
 Robotics & Embedded Systems Engineer
 
-- GitHub: https://github.com/ivanantonybabu
-- Portfolio: https://ivanantonybabu.github.io/My.personal.website/
-- LinkedIn: https://www.linkedin.com/in/ivan-antony-babu
+<br><br>
+
+📧 ivanantonybabu@gmail.com
+
+<br>
+
+💻 https://github.com/ivanantonybabu
+
+<br>
+
+💼 https://www.linkedin.com/in/ivan-antony-babu
+
+<br>
+
+🌐 https://ivanantonybabu.github.io/My.personal.website/
+
+</p>
 
 ---
 
-## 📄 License
+<p align="center">
 
-This project is intended for academic and research purposes.
+<b>⭐ If you found this project useful, consider starring the repository.</b>
+
+</p>
